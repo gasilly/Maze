@@ -3,6 +3,7 @@ import sys
 
 class Maze:
     def __init__(self,_height,_width):
+        sys.setrecursionlimit(3000)
         self.width = _width
         self.height = _height
         self.grid = [[0b1111] * self.width for i in range(self.height)]
@@ -13,6 +14,15 @@ class Maze:
             for c in r:
                 print(format(c, '#06b'), end=' ')
             print()
+
+    def setHeight(self,_height):
+        self.height = _height
+
+    def setWidth(self,_width):
+        self.width = _width
+
+    def resetGrid(self):
+        self.grid = [[0b1111] * self.width for i in range(self.height)]
 
     def recursiveAlgorithm(self, current_position): #use a recursive algorithm to create the maze
         not_checked_position = [0,1,2,3]
@@ -42,3 +52,6 @@ class Maze:
 
             if len(not_checked_position) == 0:
                 break
+
+    def drawSolution(self):
+        return
